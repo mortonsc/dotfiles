@@ -7,7 +7,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Better color scheme (for gvim)
 Plugin 'altercation/vim-colors-solarized'
 " Alternate color scheme
-Plugin 'croaker/mustang-vim'
+" Plugin 'croaker/mustang-vim'
 " Pretty status bar
 Plugin 'bling/vim-airline'
 
@@ -46,7 +46,7 @@ set shiftwidth=4
 set expandtab
 " don't wrap lines
 set nowrap
-" Make backspace behave in a sane manner.
+" make backspace act as expected
 set backspace=indent,eol,start
 set autoread
 set re=1
@@ -101,7 +101,7 @@ nnoremap <leader>nh :nohl<CR>
 
 " shortcut for <esc> in insert mode, so i don't have to reach so far
 inoremap jk <esc>
-" shortcut to get out of braces
+" shortcut to get out of braces when editing code
 inoremap }} <esc>jA
 
 " search settings
@@ -150,8 +150,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 4
-" compiler flags UM uses for C++
-let g:syntastic_cpp_compiler_options = '-Wall -Werror --std=c++11 -pedantic'
+" the compiler settings UM has us use for C++
+" (Except -Werror, I want to be able to distinguish warnings from errors)
+let g:syntastic_cpp_compiler_options = '-Wall --std=c++11 -pedantic'
 
 " NERDTree settings
 nnoremap <leader>nt :NERDTreeToggle<CR>
