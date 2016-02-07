@@ -9,7 +9,8 @@ Plugin 'altercation/vim-colors-solarized'
 " Alternate color scheme
 " Plugin 'croaker/mustang-vim'
 " Pretty status bar
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " filesystem explorer
 Plugin 'scrooloose/nerdtree'
@@ -139,7 +140,7 @@ set nofoldenable
 " Airline settings
 set laststatus=2
 set noshowmode
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
 
 " DelimitMate settings
 let delimitMate_expand_cr = 1
@@ -153,6 +154,7 @@ let g:syntastic_loc_list_height = 4
 " the compiler settings UM has us use for C++
 " (Except -Werror, I want to be able to distinguish warnings from errors)
 let g:syntastic_cpp_compiler_options = '-Wall --std=c++11 -pedantic'
+let g:syntastic_tex_checkers = ['chktex']
 
 " NERDTree settings
 nnoremap <leader>nt :NERDTreeToggle<CR>
