@@ -4,10 +4,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-" Better color scheme (for gvim)
+" Color scheme (for gvim)
 Plugin 'altercation/vim-colors-solarized'
-" Alternate color scheme
-" Plugin 'croaker/mustang-vim'
 " Pretty status bar
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -16,6 +14,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 " fuzzy file search
 Plugin 'kien/ctrlp.vim'
+" Autocompletion
+Plugin 'valloric/youcompleteme'
+" Generate ycm configs
+Plugin 'rdnetto/ycm-generator'
 " better C++ syntax highlighting
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " autocomplete for braces etc.
@@ -138,6 +140,10 @@ let g:airline_powerline_fonts=1
 
 " DelimitMate settings
 let delimitMate_expand_cr = 1
+
+" YCM settings
+" I have a default c++ conf in ~
+let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
 " Syntastic settings
 let g:syntastic_always_populate_loc_list = 1
