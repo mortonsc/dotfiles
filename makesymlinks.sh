@@ -6,7 +6,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old   # old dotfiles backup directory
-files="vimrc ycm_extra_conf.py"
+files="vimrc ycm_extra_conf.py bashrc"
 
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
