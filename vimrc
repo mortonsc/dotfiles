@@ -33,7 +33,7 @@ Plugin 'vim-scripts/TeX-9'
 
 call vundle#end()
 
-" Enable file type detection and do language-dependent indenting
+" Enable file type detection and language-dependent indenting
 filetype plugin indent on
 
 set autoindent
@@ -57,30 +57,19 @@ set number
 set hidden
 "show incomplete commands
 set showcmd
-" turn off cursor blink
-set gcr=a:blinkon0
 " Switch syntax highlighting on
 syntax enable
 
 if has('gui_running')
     " visual customization for gvim
-    " hide menu bar and toolbar
-    set guioptions-=m
+    " hide the toolbar
     set guioptions-=T
-    if has('win32')
-        " use Consolas on Windows
-        set guifont=Consolas:h10:b
-        let g:airline_powerline_fonts=0
-    else
-        set guifont=Inconsolata\ for\ Powerline\ 11
-        let g:airline_powerline_fonts = 1
-    endif
+    set guifont=Inconsolata\ for\ Powerline\ 11
 else
-    " visuals for Putty
+    " visuals for terminal
     " get airline and solarized to look right
     let &t_Co = 16
     let g:solarized_termtrans = 1
-    let g:airline_powerline_fonts=0
 endif
 
 set background=dark
@@ -91,8 +80,12 @@ augroup configgroup
     " Makefiles require proper <tab> characters
     autocmd FileType Makefile setlocal noexpandtab
     " use // for comments in C++, because one line /* */ comments look weird
-    autocmd FileType cpp setl commentstring=//%s
+    autocmd FileType cpp setlocal commentstring=//%s
 augroup END
+
+" override some functionality, but easy to reach
+let mapleader = ","
+let maplocalleader = ";"
 
 " center screen on cursor with space
 nnoremap <space> zz
@@ -100,8 +93,9 @@ nnoremap <space> zz
 " shortcut for turning off highlighting
 nnoremap <leader>nh :nohl<CR>
 
-" shortcut for <esc> in insert mode, so i don't have to reach so far
+" shortcut for <esc>, so i don't have to reach so far
 inoremap jk <esc>
+vnoremap jk <esc>
 " shortcut to get out of braces when editing code
 inoremap }} <esc>jA
 
@@ -140,7 +134,7 @@ set nofoldenable
 " Airline settings
 set laststatus=2
 set noshowmode
-" let g:airline_theme='solarized'
+let g:airline_powerline_fonts=1
 
 " DelimitMate settings
 let delimitMate_expand_cr = 1
@@ -164,6 +158,7 @@ let NERDTreeQuitOnOpen=1
 " let NERDTreeWinPos="right"
 
 " TeX-9 settings
+let g:tex_flavor = 'latex'
 let g:tex_nine_config = {
             \'compiler': 'pdflatex',
     \}
