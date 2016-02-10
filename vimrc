@@ -62,6 +62,10 @@ set showcmd
 " Switch syntax highlighting on
 syntax enable
 
+" this has to come before the terminal italics configuration
+set background=dark
+colorscheme solarized
+
 if has('gui_running')
     " visual customization for gvim
     " hide the toolbar
@@ -72,10 +76,12 @@ else
     " get airline and solarized to look right
     let &t_Co = 16
     let g:solarized_termtrans = 1
+    " escape codes for italics
+    set t_ZH=[3m
+    set t_ZR=[23m
+    " italicize comments (not sure why this is necessary, but it is)
+    highlight Comment cterm=italic
 endif
-
-set background=dark
-colorscheme solarized
 
 augroup configgroup
     autocmd!
@@ -128,6 +134,10 @@ vnoremap E $
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+" shortcuts using YCM
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>fx :YcmCompleter FixIt<CR>
+
 " fold settings
 set foldmethod=indent
 set foldnestmax=3
@@ -142,6 +152,8 @@ let g:airline_powerline_fonts=1
 let delimitMate_expand_cr = 1
 
 " YCM settings
+let g:ycm_always_populate_location_list = 1
+let g:ycm_echo_current_diagnostic = 1
 " I have a default c++ conf in ~
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
