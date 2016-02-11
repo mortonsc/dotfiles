@@ -14,12 +14,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 " fuzzy file search
 Plugin 'kien/ctrlp.vim'
-" Autocompletion
-Plugin 'valloric/youcompleteme'
+" smart C++ syntax coloring
+Plugin 'jeaye/color_coded'
 " Generate ycm configs
 Plugin 'rdnetto/ycm-generator'
-" better C++ syntax highlighting
-Plugin 'octol/vim-cpp-enhanced-highlight'
 " autocomplete for braces etc.
 Plugin 'Raimondi/delimitMate'
 " syntax checking
