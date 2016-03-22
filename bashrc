@@ -7,20 +7,17 @@
 
 alias ls='ls --color=auto'
 
-# default prompt
-# PS1='[\u@\h \W]\$ '
-
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
-PS1="${GREEN}(\u: \w) ${RESET}$ "
+PS1="${GREEN}(\u@\h: \w) ${RESET}$ "
 
 # vi mode
 set -o vi
 
 # aliases for ssh to caen
 alias sshcaen="ssh mortonsc@login-course.engin.umich.edu"
-alias mountcaen="sshfs mortonsc@login-course.engin.umich.edu:/home/mortonsc ~/caen"
-alias umountcaen="fusermount -u ~/caen"
+alias mountcaen="sshfs mortonsc@login-course.engin.umich.edu:/home/mortonsc /caen"
+alias umountcaen="fusermount -u /caen"
 
 # laziness
 alias opn="xdg-open"
