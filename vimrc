@@ -30,6 +30,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 " work with LaTeX
 Plugin 'vim-scripts/TeX-9'
+" syntax highlighting for z80 asm
+Plugin 'samsaga2/vim-z80'
 
 call vundle#end()
 
@@ -101,9 +103,11 @@ nnoremap <leader>nh :nohl<CR>
 
 " shortcut for <esc>, so i don't have to reach so far
 inoremap jk <esc>
-vnoremap jk <esc>
 " shortcut to get out of braces when editing code
 inoremap }} <esc>jA
+
+" paste last yanked text
+nnoremap <leader>pp "0p
 
 " search settings
 set incsearch
@@ -154,6 +158,8 @@ let g:ycm_always_populate_location_list = 1
 let g:ycm_echo_current_diagnostic = 1
 " I have a default c++ conf in ~
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+" get rid of annoying prompts
+let g:ycm_confirm_extra_conf = 0
 
 " Syntastic settings
 let g:syntastic_always_populate_loc_list = 1
