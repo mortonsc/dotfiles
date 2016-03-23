@@ -5,24 +5,41 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
-PS1="${GREEN}(\u@\h: \w) ${RESET}$ "
+PS1="${GREEN}(\u@\h: \w) ${RESET}\$ "
+
+# set default editor to vim
+export VISUAL=vim
 
 # vi mode
 set -o vi
 
-# aliases for ssh to caen
-alias sshcaen="ssh mortonsc@login-course.engin.umich.edu"
-alias mountcaen="sshfs mortonsc@login-course.engin.umich.edu:/home/mortonsc /caen"
+alias ls='ls --color=auto'
+alias ll="ls -al --group-directories-first"
+
+# prompt when deleting recursively or deleting more than 3 files
+alias rm='rm -I'
+
+# resume incomplete downloads
+alias wget='wget -c'
+
+# only ping 5 times
+alias ping='ping -c 5'
+
+alias ysi='yaourt -S'
+
+# shortcut to move one directory up
+alias ..='cd ..'
+
+alias resudo='sudo $(history -p \!\!)'
+
+# aliases mounting caen filesystem
+alias mountcaen="sshfs caen:/home/mortonsc /caen"
 alias umountcaen="fusermount -u /caen"
 
-# laziness
-alias opn="xdg-open"
+function cdl { cd $1; ls; }
 
-
-# set default editor to vim
-export VISUAL=vim
+# view file in new process
+function opn() { command xdg-open "$@" & }
 
