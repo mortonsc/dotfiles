@@ -32,6 +32,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/TeX-9'
 " syntax highlighting for z80 asm
 Plugin 'samsaga2/vim-z80'
+" rust 
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
@@ -49,6 +51,7 @@ set shiftwidth=4
 set expandtab
 " don't wrap lines
 set nowrap
+set textwidth=0 wrapmargin=0
 " make backspace act as expected
 set backspace=indent,eol,start
 set autoread
@@ -171,6 +174,7 @@ let g:syntastic_loc_list_height = 4
 " (Except -Werror, I want to be able to distinguish warnings from errors)
 let g:syntastic_cpp_compiler_options = '-Wall --std=c++11 -pedantic'
 let g:syntastic_tex_checkers = ['chktex']
+let g:syntastic_python_checkers = ['python2']
 
 " NERDTree settings
 nnoremap <leader>nt :NERDTreeToggle<CR>
