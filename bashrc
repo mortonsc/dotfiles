@@ -15,7 +15,7 @@ export VISUAL=vim
 # vi mode
 set -o vi
 
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 alias ll="ls -al --group-directories-first"
 
 # prompt when deleting recursively or deleting more than 3 files
@@ -35,11 +35,18 @@ alias ..='cd ..'
 alias resudo='sudo $(history -p \!\!)'
 
 # aliases mounting caen filesystem
-alias mountcaen="sshfs caen:/home/mortonsc /caen"
-alias umountcaen="fusermount -u /caen"
+alias mountcaen="sshfs -o idmap=user caen:/home/mortonsc /home/scott/mnt/caen"
+alias umountcaen="fusermount -u /home/scott/mnt/caen"
 
-function cdl { cd $1; ls; }
+# cd + ls
+function cdl() { cd $1; ls; }
+
+# mkdir + cd
+function mkcd() { mkdir -p "$1"; cd "$1"; }
 
 # view file in new process
 function opn() { command xdg-open "$@" & }
+
+# extract files matching search
+function unzipfile() { unzip "$1" "`unzip -Z -1 "$1" | grep "$2"`"; }
 
