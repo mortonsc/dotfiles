@@ -10,6 +10,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'fugalh/desert.vim'
+Plugin 'vim-scripts/Wombat'
+
+Plugin 'Valloric/YouCompleteMe'
 " filesystem explorer
 Plugin 'scrooloose/nerdtree'
 " fuzzy file search
@@ -32,8 +36,15 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/TeX-9'
 " syntax highlighting for z80 asm
 Plugin 'samsaga2/vim-z80'
+" syntax highlighting for x86 asm
+Plugin 'shirk/vim-gas'
 " rust 
 Plugin 'rust-lang/rust.vim'
+" COOL
+Plugin 'vim-scripts/cool.vim'
+" javascript
+Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
 
 call vundle#end()
 
@@ -67,16 +78,17 @@ syntax enable
 
 " this has to come before the terminal italics configuration
 set background=dark
-colorscheme solarized
 
 if has('gui_running')
     " visual customization for gvim
     " hide the toolbar
     set guioptions-=T
     set guifont=Inconsolata\ for\ Powerline\ 11
+    colorscheme wombat
 else
     " visuals for terminal
     " get airline and solarized to look right
+    colorscheme solarized
     let &t_Co = 16
     let g:solarized_termtrans = 1
     " escape codes for italics
@@ -86,12 +98,14 @@ else
     highlight Comment cterm=italic
 endif
 
+au BufRead,BufNewFile *.cl set filetype=cool
 augroup configgroup
     autocmd!
     " Makefiles require proper <tab> characters
     autocmd FileType Makefile setlocal noexpandtab
     " use // for comments in C++, because one line /* */ comments look weird
     autocmd FileType cpp setlocal commentstring=//%s
+    autocmd FileType javascript html htmldjango setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " override some functionality, but easy to reach
@@ -175,6 +189,7 @@ let g:syntastic_loc_list_height = 4
 let g:syntastic_cpp_compiler_options = '-Wall --std=c++11 -pedantic'
 let g:syntastic_tex_checkers = ['chktex']
 let g:syntastic_python_checkers = ['python2']
+let g:syntastic_rust_checkers = ['cargo', 'rustc']
 
 " NERDTree settings
 nnoremap <leader>nt :NERDTreeToggle<CR>
