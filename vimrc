@@ -11,7 +11,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'fugalh/desert.vim'
-Plugin 'vim-scripts/Wombat'
+Plugin 'sheerun/vim-wombat-scheme'
 
 Plugin 'Valloric/YouCompleteMe'
 " filesystem explorer
@@ -76,8 +76,8 @@ set showcmd
 " Switch syntax highlighting on
 syntax enable
 
-" this has to come before the terminal italics configuration
 set background=dark
+colorscheme wombat
 
 if has('gui_running')
     " visual customization for gvim
@@ -85,17 +85,6 @@ if has('gui_running')
     set guioptions-=T
     set guifont=Inconsolata\ for\ Powerline\ 11
     colorscheme wombat
-else
-    " visuals for terminal
-    " get airline and solarized to look right
-    colorscheme solarized
-    let &t_Co = 16
-    let g:solarized_termtrans = 1
-    " escape codes for italics
-    set t_ZH=[3m
-    set t_ZR=[23m
-    " italicize comments (not sure why this is necessary, but it is)
-    highlight Comment cterm=italic
 endif
 
 au BufRead,BufNewFile *.cl set filetype=cool
